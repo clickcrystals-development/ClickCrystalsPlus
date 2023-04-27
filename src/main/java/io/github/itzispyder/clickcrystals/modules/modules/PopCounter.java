@@ -18,7 +18,7 @@ public class PopCounter extends Module implements Listener {
     private static final Map<String,Integer> totemPops = new HashMap<>();
 
     public PopCounter() {
-        super("PopCounter", Categories.OTHER, "Send messages when a player pops their totem.");
+        super("PopCounter", Categories.CHAT, "Send messages when a player pops their totem.");
     }
 
     @Override

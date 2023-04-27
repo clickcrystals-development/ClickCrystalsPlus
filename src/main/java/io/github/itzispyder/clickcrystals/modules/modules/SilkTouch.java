@@ -9,7 +9,7 @@ import io.github.itzispyder.clickcrystals.modules.Module;
 public class SilkTouch extends Module {
 
     public SilkTouch() {
-        super("SilkTouch", Categories.OTHER,"\"Is there a silk touch module?\" - I_Got_You_Dead");
+        super("SilkTouch", Categories.OPTIMIZATION,"\"Is there a silk touch module?\" - I_Got_You_Dead");
     }
 
     @Override

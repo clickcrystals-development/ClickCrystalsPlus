@@ -19,7 +19,7 @@ public class AutoEZ extends Module implements Listener {
     private static final Map<String,Integer> totemPops = new HashMap<>();
     private static final Random random = new Random();
     public AutoEZ() {
-        super("AutoEZ", Categories.OTHER, "Automatically taunts players in chat.");
+        super("AutoEZ", Categories.CHAT, "Automatically taunts players in chat.");
     }
     @Override
     protected void onEnable() {
@@ -38,6 +38,8 @@ public class AutoEZ extends Module implements Listener {
             if (ent == null) return;
             if (ent.getType() != EntityType.PLAYER) return;
             String name = ent.getDisplayName().getString();
+            boolean isWithinDist = ent.getBlockPos().isWithinDistance(mc.player.getBlockPos(), 10);
+            if (!isWithinDist) return;
             if (name.equals(mc.player.getDisplayName().getString())) return;
             switch (packet.getStatus()) {
                 case 35 -> {

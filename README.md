@@ -1,6 +1,6 @@
 
 # ![ICON](https://github.com/ItziSpyder/ClickCrystals/blob/main/src/main/resources/assets/clickcrystals/icon.png) ClickCrystals [1.19.4]
-Because who needs right click anyways?
+Because who needs a clean mod anyways?
 
 ---------------------------------------------------------------
 
@@ -8,14 +8,13 @@ Because who needs right click anyways?
 ```yml
 Minecraft: 1.19.4
 Mod: 1.19.4
-Updated to: 1.19.4-0.7.2
+Updated to: 1.19.4
 
-- Nerfed the modules that people saw as macros.
-- Updated descriptions so they are accurate and friendly
+- Added Cheats so you can troll
 ```
 ![demo-menu](./assets/image/demo-menu.png)
 
-## How Do I Use ClickCrystals?
+## How Do I Use ClickCrystalsPlus?
 ```yml
 KeyBindings:
    APOSTROPHE: Open module settings menu. (Settings are now saved!)
@@ -23,16 +22,29 @@ KeyBindings:
 ```yml
 Commands:
    /cctoggle: <module> [on|off|help]
+   /optout: [on|off]
+   /setautototemdelay: [int shortDelay] [int longDelay]
+   /setpmcommand: <command>
+   /debugmode: [on|off]
+   
 ```
-|  Module  | Description |
+|  Module (! Means Blatant)  | Description |
 | ------------- |:-------------:|
-| ClickCrystal | Binds crystal place to left click.|
-| Sword2Crystal | Whenever you punch obsidian/bedrock with a sword, it will switch to a crystal.|
-| Sword2Obsidian | Punch the ground with a sword to switch to obsidian.|
-|Sword2Pearl | Right click your sword to switch to pearl slot.|
-|Totem2Pearl | Right click a totem to switch to pearl slot.|
-|Anchor2Glowstone|Whenever you place an anchor, switch to glowstone and back after you charge it.|
-|Crystal2Anchor|Right click the ground with a crystal to switch to a respawn anchor.|
+|Anchor2Glowstone|Whenever you place an anchor, switch to glowstone then back after it has been charged.|
+|AntiWeakness|Hit Crystals with your sword|
+|!AutoCharge|Makes your anchors apear pre-charged when you place them|
+|!AutoCope|Copes for you when you die|
+|!AutoDTap|Punch the ground with your sword to place an obsidian and crystal|
+|!AutoEZ|Taunts players in chat whenever they pop or die|
+|!AutoPM|Taunts players in DMs whenever they pop or die|
+|AutoTotem|Swaps a new totem from your hotbar into your offhand|
+|ClickCrystal|Binds Crystal Placing to left click|
+|Crystal2Anchor|Punch the ground with a crystal to switch to anchor|
+|CWCrystal|Hold down right click to automaticaly place and break crystals|
+|!ForceSword|A more detectable form of anti-weakness, lets you place crystals with your sword. Sounds cool when being used.|
+|!InstaAnchor|Places explosions instead of anchors|
+|PopCounter|Will count how many times your opponent pops thier totem|
+|!TPBlade|Use your sword as an EnderPearl|
 |IconHud|Renders the ClickCrystals logo on the screen.|
 |NoHurtCam|Removes the annoying screen shake.|
 |NoResourcePack| Prevents servers from forcing you to dowload their resource pack.|
@@ -44,36 +56,30 @@ Commands:
 |NoGameOverlay| Stops annoying overlays from rendering.|
 |NoLoadingScreen| Prevents most loading screens from rendering.|
 |NoServerParticles| Prevents servers from sending you particle packets, stopping all particle crashes.|
-|BlockDelayRemover| Removes the delay between breaking a block and starting to break the next block.|
-|Silk Touch| Gives any tool you hold silk touch (Real)|
+|!BlockDelayRemover| Removes the delay between breaking a block and starting to break the next block.|
+|!Silk Touch| Gives any tool you hold silk touch (Real)|
 
 
 ## But isn't this cheating?
-It is not a cheat. It does not automate any task, for every action the mod preforms, you have to click.
-- This mod is not a macro, it does not click for you. It functions as a hotkey for slots.
+Yes it is a cheat. It automates a lot of tasks, although for every action the mod preforms, you do still have to click.
 - This mod has been tested on:
-  - `McPvP`.club
-  - west.`UsPvP`.org
-  - east.`UsPvP`.org
+  - `L1festee1`.minehut.gg
   - `OgreDupe`.minehut.gg
-  - play.`pvplegacy`.net
 
 ## For this Mod You Will Need
 ```yml
 Minecraft Java Edition: 1.19.4
 Fabric Loader: 0.14.14 or higher
 Fabric API: 1.19.4
-To stop: complaining it is a cheat/macro.
+To stop: Complaining that it is a cheat. We know it is.
 ```
 
 ## Have A Good One!
-- Thanks for downloading ClickCrystals!
-- Make sure to give it a star on my [Github](https://github.com/itzispyder/clickcrystals)
-- Follow the project on [Modrinth](https://modrinth.com/mod/clickcrystals)
+- Thanks for downloading ClickCrystalsPlus!
+- Make sure to give the OG mod a star on my [Github](https://github.com/itzispyder/clickcrystals)
+- Follow the OG project on [Modrinth](https://modrinth.com/mod/clickcrystals)
 
 ## SPECIAL THANKS AND SHOUTOUT TO
 ```yml
-OgreNetworks: For their wonderful mod showcase! https://www.youtube.com/watch?v=M95TDqW2p2k
-TheTrouper: For documenting the mod, and giving me ideas!
-breadandcarrots: For being a wonderful mod tester!
+ImproperIssues: Helping me learn java
 ```

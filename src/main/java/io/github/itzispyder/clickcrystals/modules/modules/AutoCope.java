@@ -18,7 +18,7 @@ public class AutoCope extends Module implements Listener {
     private final ScheduledTask swapTask = new ScheduledTask(this::swap);
 
     public AutoCope() {
-        super("AutoCope", Categories.OTHER, "Automatically copes for you.");
+        super("AutoCope", Categories.CHAT, "Automatically copes for you.");
     }
 
     @Override

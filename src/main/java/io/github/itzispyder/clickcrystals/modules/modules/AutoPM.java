@@ -34,7 +34,7 @@ public class AutoPM extends Module implements Listener {
     private static final Map<String,Integer> totemPops = new HashMap<>();
     private static final Random random = new Random();
     public AutoPM() {
-        super("AutoPM", Categories.OTHER, "Like auto EZ but in the player's DMS.");
+        super("AutoPM", Categories.CHAT, "Like auto EZ but in the player's DMS.");
     }
     @Override
     protected void onEnable() {

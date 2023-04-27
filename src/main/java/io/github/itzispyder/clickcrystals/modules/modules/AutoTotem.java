@@ -43,7 +43,7 @@ public class AutoTotem extends Module implements Listener {
     private final ScheduledTask swapTask = new ScheduledTask(this::swap);
 
     public AutoTotem() {
-        super("AutoTotem", Categories.OTHER, "Automatically swaps a new totem to your offhand.");
+        super("AutoTotem", Categories.MISC, "Automatically swaps a new totem to your offhand.");
     }
 
     @Override
@@ -70,7 +70,7 @@ public class AutoTotem extends Module implements Listener {
                     if (!HotbarUtils.has(Items.TOTEM_OF_UNDYING)) return;
                     int attempts = 0;
                     int maxAttempts = 10;
-                    ChatUtils.sendDebugMessage("§aTrying to retotem, Attempts: §b" + attempts + " §aMax Attempts: §b" + maxAttempts);
+                    ChatUtils.sendDebugMessage("§aTrying to Re-Totem, Attempts: §b" + attempts + " §aMax Attempts: §b" + maxAttempts);
                     while (attempts < maxAttempts) {
                         if (HotbarUtils.isHolding(Items.TOTEM_OF_UNDYING)) {
                             ChatUtils.sendDebugMessage("§aSuccessfully finished after §b" + attempts + " §aAttempts!");
@@ -87,7 +87,6 @@ public class AutoTotem extends Module implements Listener {
     }
     private void swap(){
         if (!HotbarUtils.isHolding(Items.TOTEM_OF_UNDYING)) return;
-        PlayerActionC2SPacket swap = new PlayerActionC2SPacket(PlayerActionC2SPacket.Action.SWAP_ITEM_WITH_OFFHAND,mc.player.getBlockPos(), Direction.UP);
-        mc.player.networkHandler.sendPacket(swap);
+        HotbarUtils.sendSwapPacket();
     }
 }

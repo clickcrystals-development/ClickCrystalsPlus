@@ -65,7 +65,7 @@ public abstract class HotbarUtils {
         }
         return false;
     }
-    private static void sendSwapPacket() {
+    public static void sendSwapPacket() {
         PlayerActionC2SPacket packet = new PlayerActionC2SPacket(PlayerActionC2SPacket.Action.SWAP_ITEM_WITH_OFFHAND,mc.player.getBlockPos(), Direction.UP);
         mc.player.networkHandler.sendPacket(packet);
     }

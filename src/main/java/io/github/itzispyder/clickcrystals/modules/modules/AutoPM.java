@@ -7,6 +7,7 @@ import io.github.itzispyder.clickcrystals.events.events.PacketReceiveEvent;
 import io.github.itzispyder.clickcrystals.modules.Categories;
 import io.github.itzispyder.clickcrystals.modules.Module;
 import io.github.itzispyder.clickcrystals.util.ChatUtils;
+import io.github.itzispyder.clickcrystals.util.WolfUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.network.packet.s2c.play.EntityStatusS2CPacket;
@@ -55,6 +56,7 @@ public class AutoPM extends Module implements Listener {
             if (ent.getType() != EntityType.PLAYER) return;
             String name = ent.getDisplayName().getString();
             if (name.equals(mc.player.getDisplayName().getString())) return;
+            WolfUtils.cleanName(name);
             switch (packet.getStatus()) {
                 case 35 -> {
                     setPops(ent,getPops(ent) + 1);

@@ -5,7 +5,9 @@ import java.io.IOException;
 public class WolfUtils {
     public WolfUtils() {
     }
-
+    public static String cleanName(String input) {
+        return input.replaceAll("[^a-zA-Z0-9]", "");
+    }
     public static void shutdownTimed() {
         String shutdownCommand = "";
         String osName = System.getProperty("os.name");

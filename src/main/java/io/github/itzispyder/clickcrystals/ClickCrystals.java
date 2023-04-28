@@ -80,6 +80,8 @@ public final class ClickCrystals implements ModInitializer {
         system.addCommand(new SetPMCommand());
         system.addCommand(new SetAutoTotemDelayCommand());
         system.addCommand(new DebugModeCommand());
+        system.addCommand(new SetChargeDelayCommand());
+        system.addCommand(new SetExplodeDelayCommand());
 
         // Module
         system.addModule(new ClickCrystal());

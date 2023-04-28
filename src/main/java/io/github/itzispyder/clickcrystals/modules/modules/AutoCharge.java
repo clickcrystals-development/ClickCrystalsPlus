@@ -21,7 +21,6 @@ import net.minecraft.util.math.BlockPos;
  * Anchor2Glowstone module
  */
 public class AutoCharge extends Module implements Listener {
-
     private final ScheduledTask charge = new ScheduledTask(this::autoCharge);
 
     /**
@@ -58,7 +57,7 @@ public class AutoCharge extends Module implements Listener {
                         int charges = state.get(RespawnAnchorBlock.CHARGES);
                         if (charges >= 1) return;
                     }
-                    charge.runDelayedTask(Randomizer.rand(1,50));
+                    charge.runDelayedTask(Randomizer.rand(InstaAnchor.getChargeShortDelay(),InstaAnchor.getChargeLongDelay()));
                 }
             } catch (Exception ignore) {}
         }

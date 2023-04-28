@@ -1,5 +1,6 @@
 package io.github.itzispyder.clickcrystals.modules.modules;
 
+import io.github.itzispyder.clickcrystals.data.ConfigSection;
 import io.github.itzispyder.clickcrystals.events.EventHandler;
 import io.github.itzispyder.clickcrystals.events.Listener;
 import io.github.itzispyder.clickcrystals.events.events.PacketSendEvent;
@@ -17,15 +18,48 @@ import net.minecraft.network.packet.c2s.play.PlayerInteractBlockC2SPacket;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 
+import static io.github.itzispyder.clickcrystals.ClickCrystals.config;
+
 /**
  * Anchor2Glowstone module
  */
 public class InstaAnchor extends Module implements Listener {
 
+    private static int chargeShortDelay = config.getOrDefault("plus.chargeShortDelay", Integer.class, 10);
+    private static int chargeLongDelay = config.getOrDefault("plus.chargeLongDelay", Integer.class, 50);
+    private static int explodeShortDelay = config.getOrDefault("plus.explodeShortDelay", Integer.class, 50);
+    private static int explodeLongDelay = config.getOrDefault("plus.explodeLongDelay", Integer.class, 100);
+
+    public static int getChargeShortDelay() {
+        return chargeShortDelay;
+    }
+    public static int getChargeLongDelay() {
+        return chargeLongDelay;
+    }
+    public static int getExplodeShortDelay() {
+        return explodeShortDelay;
+    }
+    public static int getExplodeLongDelay() {
+        return explodeShortDelay;
+    }
     private final ScheduledTask charge = new ScheduledTask(this::autoCharge);
 
     private final ScheduledTask explode = new ScheduledTask(this::autoExplode);
 
+    public static void setChargeDelay(int chargeShortDelay, int chargeLongDelay) {
+        InstaAnchor.chargeShortDelay = chargeShortDelay;
+        InstaAnchor.chargeLongDelay = chargeLongDelay;
+        config.set("plus.chargeShortDelay", new ConfigSection<>(chargeShortDelay));
+        config.set("plus.chargeLongDelay", new ConfigSection<>(chargeLongDelay));
+        config.save();
+    }
+    public static void setExplodeDelay(int explodeShortDelay, int explodeLongDelay) {
+        InstaAnchor.explodeShortDelay = explodeShortDelay;
+        InstaAnchor.explodeLongDelay = explodeLongDelay;
+        config.set("plus.explodeShortDelay", new ConfigSection<>(explodeShortDelay));
+        config.set("plus.explodeLongDelay", new ConfigSection<>(explodeLongDelay));
+        config.save();
+    }
     /**
      * Module constructor
      */
@@ -60,8 +94,8 @@ public class InstaAnchor extends Module implements Listener {
                     int charges = state.get(RespawnAnchorBlock.CHARGES);
                     if (charges >= 1) return;
                 }
-                charge.runDelayedTask(Randomizer.rand(1,50));
-                explode.runDelayedTask(Randomizer.rand(50,75));
+                charge.runDelayedTask(Randomizer.rand(chargeShortDelay,chargeLongDelay));
+                explode.runDelayedTask(Randomizer.rand(explodeShortDelay,explodeLongDelay));
             }
         }
     }

@@ -5,15 +5,19 @@ import io.github.itzispyder.clickcrystals.commands.commands.*;
 import io.github.itzispyder.clickcrystals.data.Configuration;
 import io.github.itzispyder.clickcrystals.events.events.ClientTickEndEvent;
 import io.github.itzispyder.clickcrystals.events.events.ClientTickStartEvent;
+import io.github.itzispyder.clickcrystals.events.events.PlayerAttackEntityEvent;
 import io.github.itzispyder.clickcrystals.events.listeners.ChatEventListener;
 import io.github.itzispyder.clickcrystals.gui.hud.ClickCrystalIconHud;
+import io.github.itzispyder.clickcrystals.gui.hud.ClickPerSecondHud;
 import io.github.itzispyder.clickcrystals.gui.hud.ModuleListTextHud;
 import io.github.itzispyder.clickcrystals.gui.screens.ClickCrystalMenuScreen;
 import io.github.itzispyder.clickcrystals.modules.Module;
 import io.github.itzispyder.clickcrystals.modules.modules.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.util.ActionResult;
 
 import java.io.File;
 
@@ -54,6 +58,11 @@ public final class ClickCrystals implements ModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             ClientTickEndEvent event = new ClientTickEndEvent();
             system.eventBus.pass(event);
+        });
+        AttackEntityCallback.EVENT.register((player, world, hand, ent, hitResult) -> {
+            PlayerAttackEntityEvent event = new PlayerAttackEntityEvent(player, world, hand, ent, hitResult);
+            system.eventBus.pass(event);
+            return ActionResult.PASS;
         });
     }
 
@@ -103,11 +112,13 @@ public final class ClickCrystals implements ModInitializer {
         system.addModule(new AutoPM());
         system.addModule(new ForceSword());
         system.addModule(new InstaAnchor());
+        system.addModule(new CrystalPerSecondHud());
         Module.loadConfigModules();
 
         // Hud
         system.addHud(new ClickCrystalIconHud());
         system.addHud(new ModuleListTextHud());
+        system.addHud(new ClickPerSecondHud());
     }
 
     public void initRpc() {

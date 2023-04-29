@@ -19,7 +19,7 @@ public class SetExplodeDelayCommand extends Command {
         builder.then(argument("ShortDelay", IntegerArgumentType.integer()).then(argument("LongDelay", IntegerArgumentType.integer()).executes(context -> {
             int shortDelay = context.getArgument("ShortDelay", Integer.class);
             int longDelay = context.getArgument("LongDelay", Integer.class);
-            InstaAnchor.setExplodeDelay(shortDelay, longDelay);
+            InstaAnchor.setClickDelays(shortDelay, longDelay);
             ChatUtils.sendPrefixMessage("§3Set the explode delay to §a" + shortDelay + " §3through §a" + longDelay);
             return SINGLE_SUCCESS;
         })));

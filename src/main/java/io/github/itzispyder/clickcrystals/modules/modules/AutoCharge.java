@@ -57,7 +57,7 @@ public class AutoCharge extends Module implements Listener {
                         int charges = state.get(RespawnAnchorBlock.CHARGES);
                         if (charges >= 1) return;
                     }
-                    charge.runDelayedTask(Randomizer.rand(InstaAnchor.getChargeShortDelay(),InstaAnchor.getChargeLongDelay()));
+                    charge.runDelayedTask(Randomizer.rand(InstaAnchor.getClickDelayMin(),InstaAnchor.getClickDelayMax()));
                 }
             } catch (Exception ignore) {}
         }

@@ -28,36 +28,36 @@ Commands:
    /debugmode: [on|off]
    
 ```
-|  Module (! Means Blatant)  | Description |
-| ------------- |:-------------:|
-|Anchor2Glowstone|Whenever you place an anchor, switch to glowstone then back after it has been charged.|
-|AntiWeakness|Hit Crystals with your sword|
-|!AutoCharge|Makes your anchors apear pre-charged when you place them|
-|!AutoCope|Copes for you when you die|
-|!AutoDTap|Punch the ground with your sword to place an obsidian and crystal|
-|!AutoEZ|Taunts players in chat whenever they pop or die|
-|!AutoPM|Taunts players in DMs whenever they pop or die|
-|AutoTotem|Swaps a new totem from your hotbar into your offhand|
-|ClickCrystal|Binds Crystal Placing to left click|
-|Crystal2Anchor|Punch the ground with a crystal to switch to anchor|
-|CWCrystal|Hold down right click to automaticaly place and break crystals|
-|!ForceSword|A more detectable form of anti-weakness, lets you place crystals with your sword. Sounds cool when being used.|
-|!InstaAnchor|Places explosions instead of anchors|
-|PopCounter|Will count how many times your opponent pops thier totem|
-|!TPBlade|Use your sword as an EnderPearl|
-|IconHud|Renders the ClickCrystals logo on the screen.|
-|NoHurtCam|Removes the annoying screen shake.|
-|NoResourcePack| Prevents servers from forcing you to dowload their resource pack.|
-|SlowHandSwing| Makes your hand swing like mining fatigue.|
-|ToolSwitcher| Switches to the right tool for the job.|
-|TrueSight| Renders entities as if you were in spectator mode.|
-|FullBright| Increases your gamma so you can actually see.|
-|ModuleListHud| Shows your active modules on screen.|
-|NoGameOverlay| Stops annoying overlays from rendering.|
-|NoLoadingScreen| Prevents most loading screens from rendering.|
-|NoServerParticles| Prevents servers from sending you particle packets, stopping all particle crashes.|
-|!BlockDelayRemover| Removes the delay between breaking a block and starting to break the next block.|
-|!Silk Touch| Gives any tool you hold silk touch (Real)|
+| Module (! Means Blatant) |                                                  Description                                                   |
+|--------------------------|:--------------------------------------------------------------------------------------------------------------:|
+| Anchor2Glowstone         |             Whenever you place an anchor, switch to glowstone then back after it has been charged.             |
+| AntiWeakness             |                                          Hit Crystals with your sword                                          |
+| !AutoCharge              |                            Makes your anchors apear pre-charged when you place them                            |
+| !AutoCope                |                                           Copes for you when you die                                           |
+| !AutoDTap                |                       Punch the ground with your sword to place an obsidian and crystal                        |
+| !AutoEZ                  |                                Taunts players in chat whenever they pop or die                                 |
+| !AutoPM                  |                                 Taunts players in DMs whenever they pop or die                                 |
+| AutoTotem                |                              Swaps a new totem from your hotbar into your offhand                              |
+| ClickCrystal             |                                      Binds Crystal Placing to left click                                       |
+| Crystal2Anchor           |                              Punch the ground with a crystal to switch to anchor                               |
+| CWCrystal                |                         Hold down right click to automaticaly place and break crystals                         |
+| !ForceSword              | A more detectable form of anti-weakness, lets you place crystals with your sword. Sounds cool when being used. |
+| !InstaAnchor             |                                      Places explosions instead of anchors                                      |
+| PopCounter               |                            Will count how many times your opponent pops thier totem                            |
+| !TPBlade                 |                                        Use your sword as an EnderPearl                                         |
+| IconHud                  |                                 Renders the ClickCrystals logo on the screen.                                  |
+| NoHurtCam                |                                       Removes the annoying screen shake.                                       |
+| NoResourcePack           |                       Prevents servers from forcing you to dowload their resource pack.                        |
+| SlowHandSwing            |                                   Makes your hand swing like mining fatigue.                                   |
+| ToolSwitcher             |                                    Switches to the right tool for the job.                                     |
+| TrueSight                |                              Renders entities as i f you were in spectator mode.                               |
+| FullBright               |                                 Increases your gamma so you can actually see.                                  |
+| ModuleListHud            |                                      Shows your active modules on screen.                                      |
+| NoGameOverlay            |                                    Stops annoying overlays from rendering.                                     |
+| NoLoadingScreen          |                                 Prevents most loading screens from rendering.                                  |
+| NoServerParticles        |               Prevents servers from sending you particle packets, stopping all particle crashes.               |
+| !BlockDelayRemover       |                Removes the delay between breaking a block and starting to break the next block.                |
+| !Silk Touch              |                                   Gives any tool you hold silk touch (Real)                                    |
 
 
 ## But isn't this cheating?

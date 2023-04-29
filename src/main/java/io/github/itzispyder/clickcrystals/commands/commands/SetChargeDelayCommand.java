@@ -3,7 +3,6 @@ package io.github.itzispyder.clickcrystals.commands.commands;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import io.github.itzispyder.clickcrystals.commands.Command;
-import io.github.itzispyder.clickcrystals.modules.modules.AutoTotem;
 import io.github.itzispyder.clickcrystals.modules.modules.InstaAnchor;
 import io.github.itzispyder.clickcrystals.util.ChatUtils;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
@@ -19,7 +18,7 @@ public class SetChargeDelayCommand extends Command {
         builder.then(argument("ShortDelay", IntegerArgumentType.integer()).then(argument("LongDelay", IntegerArgumentType.integer()).executes(context -> {
             int shortDelay = context.getArgument("ShortDelay", Integer.class);
             int longDelay = context.getArgument("LongDelay", Integer.class);
-            InstaAnchor.setChargeDelay(shortDelay, longDelay);
+            InstaAnchor.setClickDelays(shortDelay, longDelay);
             ChatUtils.sendPrefixMessage("§3Set the charge delay to §a" + shortDelay + " §3through §a" + longDelay);
             return SINGLE_SUCCESS;
         })));

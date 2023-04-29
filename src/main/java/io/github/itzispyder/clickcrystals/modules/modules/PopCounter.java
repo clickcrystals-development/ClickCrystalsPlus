@@ -43,10 +43,10 @@ public class PopCounter extends Module implements Listener {
             switch (packet.getStatus()) {
                 case 35 -> {
                     setPops(ent,getPops(ent) + 1);
-                    ChatUtils.sendPrefixMessage("§b§l" + name + "§7§o popped §8[§a" + getPops(ent) + "§8]§7§o totems.");
+                    ChatUtils.sendPrefixMessage("§b§l" + name + "§7§o popped §8[§e" + getPops(ent) + "§8]§7§o totems.");
                 }
                 case 3 -> {
-                    ChatUtils.sendPrefixMessage("§b§l" + name + "§7§o died after popping §8[§a" + getPops(ent) + "§8]§7§o totems!");
+                    ChatUtils.sendPrefixMessage("§b§l" + name + "§7§o died after popping §8[§6" + getPops(ent) + "§8]§7§o totems!");
                     setPops(ent,0);
                 }
             }

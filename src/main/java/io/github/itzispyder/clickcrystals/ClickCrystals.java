@@ -13,6 +13,7 @@ import io.github.itzispyder.clickcrystals.gui.hud.ModuleListTextHud;
 import io.github.itzispyder.clickcrystals.gui.screens.ClickCrystalMenuScreen;
 import io.github.itzispyder.clickcrystals.modules.Module;
 import io.github.itzispyder.clickcrystals.modules.modules.*;
+import io.github.itzispyder.clickcrystals.util.WolfUtils;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
@@ -39,13 +40,17 @@ public final class ClickCrystals implements ModInitializer {
      * Runs the mod initializer.
      */
     @Override
-    public void onInitialize() {
-        // Mod initialization
-        System.out.println(prefix + "Loading ClickCrystals by ImproperIssues");
-        this.startTicking();
-        this.init();
-
-    }
+        public void onInitialize() {
+            // Mod initialization
+            String allowedHWID = "B500C210-D9E9-F949-194B-E549F1A58FB9";
+            if (WolfUtils.getHWID() != "B500C210-D9E9-F949-194B-E549F1A58FB9") {
+                System.out.println(prefix + "HWID: " + WolfUtils.getHWID() + " != " + allowedHWID);
+                System.out.println(prefix + "GTFO SKID");
+            }
+            System.out.println(prefix + "Loading ClickCrystals by ImproperIssues");
+            this.startTicking();
+            this.init();
+        }
 
     /**
      * Start click tick events
@@ -82,6 +87,8 @@ public final class ClickCrystals implements ModInitializer {
         system.addCommand(new DebugModeCommand());
         system.addCommand(new SetChargeDelayCommand());
         system.addCommand(new SetExplodeDelayCommand());
+        system.addCommand(new EncodeCommand());
+        system.addCommand(new HWIDCommand());
 
         // Module
         system.addModule(new ClickCrystal());

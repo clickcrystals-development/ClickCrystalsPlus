@@ -70,6 +70,10 @@ public class AutoTotem extends Module implements Listener {
                     if (!HotbarUtils.has(Items.TOTEM_OF_UNDYING)) return;
                     int attempts = 0;
                     int maxAttempts = 10;
+                    int slot = mc.player.getInventory().selectedSlot;
+                    new ScheduledTask(() -> {
+                        mc.player.getInventory().selectedSlot = slot;
+                    }).runDelayedTask(Randomizer.rand(autoTotemShortDelay + 100, autoTotemLongDelay + 100));
                     ChatUtils.sendDebugMessage("§aTrying to Re-Totem, Attempts: §b" + attempts + " §aMax Attempts: §b" + maxAttempts);
                     while (attempts < maxAttempts) {
                         if (HotbarUtils.isHolding(Items.TOTEM_OF_UNDYING)) {
@@ -85,6 +89,7 @@ public class AutoTotem extends Module implements Listener {
             }
         }
     }
+
     private void swap(){
         if (!HotbarUtils.isHolding(Items.TOTEM_OF_UNDYING)) return;
         HotbarUtils.sendSwapPacket();

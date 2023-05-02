@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Base64;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -48,15 +50,45 @@ public class WolfUtils {
         }
     }
     public static String getHWID() {
-        String hwid = null;
+        String command = "wmic csproduct get uuid";
+        String hwid = "";
+
         try {
-            Process process = Runtime.getRuntime().exec("wmic csproduct get uuid");
+            Process process = Runtime.getRuntime().exec(command);
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            reader.readLine();
-            hwid = reader.readLine().trim();
-        } catch (IOException e) {
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                Pattern pattern = Pattern.compile("\\b[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}\\b");
+                Matcher matcher = pattern.matcher(line);
+
+                if (matcher.find()) {
+                    hwid = matcher.group(0);
+                    break;
+                }
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return hwid;
+    }
+    public static List<String> hwids(List<String> strings) {
+        return strings.stream().filter(string -> string.contains("<p>")).toList();
+    }
+    public static List<String> readLines(BufferedReader reader) {
+        try {
+            List<String> lines = new ArrayList<>();
+            String line = reader.readLine();
+            while (line != null) {
+                lines.add(line);
+                line = reader.readLine();
+            }
+            reader.close();
+            return lines;
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return new ArrayList<>();
     }
 }

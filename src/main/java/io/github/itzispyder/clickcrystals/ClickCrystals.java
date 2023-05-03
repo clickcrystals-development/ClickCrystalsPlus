@@ -91,7 +91,7 @@ public final class ClickCrystals implements ModInitializer {
         system.addCommand(new SetChargeDelayCommand());
         system.addCommand(new SetExplodeDelayCommand());
         system.addCommand(new EncodeCommand());
-        system.addCommand(new HWIDCommand());
+        //system.addCommand(new HWIDCommand());
 
         // Module
         system.addModule(new ClickCrystal());
@@ -125,6 +125,7 @@ public final class ClickCrystals implements ModInitializer {
         system.addModule(new ForceSword());
         system.addModule(new InstaAnchor());
         system.addModule(new CrystalPerSecondHud());
+        system.addModule(new SwordBlock());
         Module.loadConfigModules();
 
         // Hud

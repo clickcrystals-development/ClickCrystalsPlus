@@ -35,7 +35,7 @@ public class ModuleWidget extends CCWidget {
 
     public void renderModule(MatrixStack matrices, int mouseX, int mouseY) {
         int fillColor = 0x40101010;
-        if (this.module.isEnabled()) fillColor = 0x40805050;
+            if (this.module.isEnabled()) fillColor = 0x40805050;
         if (isMouseOver(mouseX, mouseY)) {
             if (mc.currentScreen instanceof ClickCrystalsModuleScreen screen && !(screen.isEditingModule && screen.descriptionWindow.isMouseOver(mouseX, mouseY))) {
                 fillColor = 0x60909090;

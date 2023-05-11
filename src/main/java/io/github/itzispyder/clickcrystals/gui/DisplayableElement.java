@@ -16,15 +16,15 @@ public abstract class DisplayableElement implements Draggable {
     private PressAction pressAction;
 
     public DisplayableElement() {
-        this(0, 0, 0, 0, 1, 0xFF1A9494, 0xD0000000);
+        this(0, 0, 0, 0, 1, 0xFF8D1A94, 0xD0000000);
     }
 
     public DisplayableElement(int x, int y, int width, int height) {
-        this(x, y, width, height, 1, 0xFF1A9494, 0xD0000000);
+        this(x, y, width, height, 1, 0xFF8D1A94, 0xD0000000);
     }
 
     public DisplayableElement(int x, int y, int width, int height, int borderThickness) {
-        this(x, y, width, height, borderThickness, 0xFF1A9494, 0xD0000000);
+        this(x, y, width, height, borderThickness, 0xFF8D1A94, 0xD0000000);
     }
 
     public DisplayableElement(int borderColor, int fillColor) {

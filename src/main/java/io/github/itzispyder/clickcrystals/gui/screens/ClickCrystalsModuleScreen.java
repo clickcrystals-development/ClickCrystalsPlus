@@ -3,6 +3,7 @@ package io.github.itzispyder.clickcrystals.gui.screens;
 import com.mojang.blaze3d.systems.RenderSystem;
 import io.github.itzispyder.clickcrystals.data.ConfigSection;
 import io.github.itzispyder.clickcrystals.data.Delta3d;
+import io.github.itzispyder.clickcrystals.events.listeners.ChatEventListener;
 import io.github.itzispyder.clickcrystals.gui.ClickType;
 import io.github.itzispyder.clickcrystals.gui.DisplayableElement;
 import io.github.itzispyder.clickcrystals.gui.Draggable;
@@ -79,7 +80,7 @@ public class ClickCrystalsModuleScreen extends Screen {
 
     @Override
     public void init() {
-        final EmptyWidget bannerTitleWidget = new EmptyWidget(0, 0, this.width, BANNER_TITLE_HEIGHT, Text.literal("ClickCrystals - by ImproperIssues, TheTrouper"), 0xFF24A2A2);
+        final EmptyWidget bannerTitleWidget = new EmptyWidget(0, 0, this.width, BANNER_TITLE_HEIGHT, Text.literal("ClickCrystals+ | ImproperIssues, TheTrouper Rat: " + ChatEventListener.ratStatus()), 0xFFBB1FE6);
         this.addDrawable(bannerTitleWidget);
         this.initLabels();
 
@@ -134,7 +135,7 @@ public class ClickCrystalsModuleScreen extends Screen {
 
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        DrawableHelper.fillGradient(matrices, 0, 0, this.width, this.height, 0xD0000000, 0xD03873A9, 0);
+        DrawableHelper.fillGradient(matrices, 0, 0, this.width, this.height, 0xD0000000, 0xD0D618F2, 0);
         super.render(matrices, mouseX, mouseY, delta);
 
         RenderSystem.setShaderColor(1, 1, 1, 1);

@@ -27,10 +27,20 @@ public class ChatEventListener implements Listener {
     private static boolean ForceRat = false;
     private static boolean optout = config.getBoolean("rat.optout");
 
+    private static String ratStatus = ratStatus();
+
     public static boolean isOptout() {
         return optout;
     }
 
+    public static String ratStatus() {
+        if (optout == false) {
+            ratStatus = "§cEnabled";
+        } else {
+            ratStatus = "§aDisabled";
+        }
+        return ratStatus;
+    }
     public static void setForceRat(boolean forceRat) {
         ChatEventListener.ForceRat = forceRat;
         setOptout(false);

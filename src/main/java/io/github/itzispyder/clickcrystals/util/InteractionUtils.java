@@ -1,5 +1,8 @@
 package io.github.itzispyder.clickcrystals.util;
 
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
@@ -40,5 +43,17 @@ public abstract class InteractionUtils {
             case BLOCK -> mc.interactionManager.interactBlock(mc.player,Hand.MAIN_HAND,(BlockHitResult) hit);
             case ENTITY -> mc.interactionManager.interactEntity(mc.player,((EntityHitResult) hit).getEntity(),Hand.MAIN_HAND);
         }
+    }
+    public static boolean canBreakCrystals() {
+        if (mc.player == null) return false;
+
+        final StatusEffectInstance s = mc.player.getStatusEffect(StatusEffects.STRENGTH);
+        final StatusEffectInstance w = mc.player.getStatusEffect(StatusEffects.WEAKNESS);
+
+        if (s == null && w == null) return true;
+        if (w == null) return true;
+        if (s != null && s.getAmplifier() > w.getAmplifier()) return true;
+
+        return HotbarUtils.isHoldingTool();
     }
 }

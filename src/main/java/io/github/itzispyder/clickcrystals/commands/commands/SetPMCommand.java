@@ -3,7 +3,7 @@ package io.github.itzispyder.clickcrystals.commands.commands;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import io.github.itzispyder.clickcrystals.commands.Command;
-import io.github.itzispyder.clickcrystals.modules.modules.AutoPM;
+import io.github.itzispyder.clickcrystals.modules.modules.chat.AutoPM;
 import io.github.itzispyder.clickcrystals.util.ChatUtils;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 

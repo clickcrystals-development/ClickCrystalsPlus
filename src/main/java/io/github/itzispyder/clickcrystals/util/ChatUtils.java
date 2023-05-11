@@ -2,8 +2,7 @@ package io.github.itzispyder.clickcrystals.util;
 
 import net.minecraft.text.Text;
 
-import static io.github.itzispyder.clickcrystals.ClickCrystals.mc;
-import static io.github.itzispyder.clickcrystals.ClickCrystals.starter;
+import static io.github.itzispyder.clickcrystals.ClickCrystals.*;
 
 /**
  * Client chat utils
@@ -22,7 +21,8 @@ public abstract class ChatUtils {
      */
     public static void sendMessage(String message) {
          if (message == null) return;
-         mc.player.sendMessage(Text.literal(message));
+         if  (mc.player == null) return;
+        mc.player.sendMessage(Text.literal(message));
     }
 
     /**
@@ -31,7 +31,7 @@ public abstract class ChatUtils {
      */
     public static void sendDebugMessage(String message) {if (debugMode) sendMessage(debugPrefix + message);}
     public static void sendPrefixMessage(String message) {
-        sendMessage(starter + message);
+        sendMessage(STARTER + message);
     }
 
     /**

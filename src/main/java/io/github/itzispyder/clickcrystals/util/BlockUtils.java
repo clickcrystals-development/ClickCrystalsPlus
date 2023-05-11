@@ -92,10 +92,13 @@ public abstract class BlockUtils {
 
     public static BlockState getCrosshair() {
         final HitResult hit = mc.crosshairTarget;
+
         if (hit == null) return null;
         if (hit.getType() != HitResult.Type.BLOCK) return null;
         if (mc.player == null) return null;
-        BlockPos pos = ((BlockHitResult) hit).getBlockPos();
+
+        final BlockPos pos = ((BlockHitResult) hit).getBlockPos();
+
         return mc.player.getWorld().getBlockState(pos);
     }
 }

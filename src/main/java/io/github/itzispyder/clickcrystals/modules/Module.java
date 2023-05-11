@@ -9,7 +9,7 @@ import net.minecraft.client.MinecraftClient;
 import java.io.Serializable;
 
 import static io.github.itzispyder.clickcrystals.ClickCrystals.config;
-import static io.github.itzispyder.clickcrystals.ClickCrystals.starter;
+import static io.github.itzispyder.clickcrystals.ClickCrystals.STARTER;
 
 /**
  * Represents a toggleable module
@@ -102,8 +102,8 @@ public abstract class Module implements Toggleable, Serializable {
      * @return help message
      */
     public String getHelp() {
-        return " \n" + starter + "§f" + name +
-                "\n" + "§3Category: §b" + category.getName() +
+        return " \n" + STARTER + "§f" + name +
+                "\n" + "§3Category: §b" + category.name() +
                 "\n" + "§7" + description + "\n ";
     }
 
@@ -120,7 +120,7 @@ public abstract class Module implements Toggleable, Serializable {
      * @return label
      */
     public String getCurrentStateLabel() {
-        return (enabled ? "§b" : "§7") + getNameLimited();
+        return (enabled ? "§d" : "§5") + getNameLimited();
     }
 
     /**

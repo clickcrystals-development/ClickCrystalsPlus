@@ -1,6 +1,7 @@
 package io.github.itzispyder.clickcrystals.util;
 
 import io.github.itzispyder.clickcrystals.scheduler.ScheduledTask;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -156,5 +157,27 @@ public abstract class HotbarUtils {
                 || isHolding(Items.TOTEM_OF_UNDYING)
                 || isHolding(Items.GLOWSTONE)
                 || isHolding(Items.RESPAWN_ANCHOR);
+    }
+    public static double getFullHealthRatio() {
+        final PlayerEntity p = mc.player;
+        if (p == null) return 0.0;
+        return p.getHealth() / p.getMaxHealth();
+    }
+    public static boolean isHoldingTool() {
+        return nameContains("_sword") ||
+                nameContains("_pickaxe") ||
+                nameContains("_axe") ||
+                nameContains("_hoe") ||
+                nameContains("_shovel") ||
+                nameContains("trident");
+    }
+    public static boolean isTotemed() {
+        if (mc.player == null) return false;
+
+        final ItemStack main = mc.player.getStackInHand(Hand.MAIN_HAND);
+        final ItemStack off = mc.player.getStackInHand(Hand.OFF_HAND);
+        final Item totem = Items.TOTEM_OF_UNDYING;
+
+        return (main != null && main.getItem() == totem) || (off != null && off.getItem() == totem);
     }
 }
